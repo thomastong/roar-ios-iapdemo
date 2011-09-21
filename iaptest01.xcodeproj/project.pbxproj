@@ -1,0 +1,265 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C3059F8E1429CA560070FCBA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3059F8D1429CA560070FCBA /* UIKit.framework */; };
+		C3059F901429CA560070FCBA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3059F8F1429CA560070FCBA /* Foundation.framework */; };
+		C3059F921429CA560070FCBA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3059F911429CA560070FCBA /* CoreGraphics.framework */; };
+		C3059F981429CA560070FCBA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C3059F961429CA560070FCBA /* InfoPlist.strings */; };
+		C3059F9B1429CA560070FCBA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C3059F9A1429CA560070FCBA /* main.m */; };
+		C3059F9E1429CA560070FCBA /* iaptest01AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C3059F9D1429CA560070FCBA /* iaptest01AppDelegate.m */; };
+		C3059FA11429CA560070FCBA /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3059F9F1429CA560070FCBA /* MainWindow.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		C3059F891429CA560070FCBA /* iaptest01.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iaptest01.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3059F8D1429CA560070FCBA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		C3059F8F1429CA560070FCBA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		C3059F911429CA560070FCBA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		C3059F951429CA560070FCBA /* iaptest01-Info.plist */ = {isa = PBXFileReference; path = "iaptest01-Info.plist"; sourceTree = "<group>"; };
+		C3059F971429CA560070FCBA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C3059F991429CA560070FCBA /* iaptest01-Prefix.pch */ = {isa = PBXFileReference; path = "iaptest01-Prefix.pch"; sourceTree = "<group>"; };
+		C3059F9A1429CA560070FCBA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C3059F9C1429CA560070FCBA /* iaptest01AppDelegate.h */ = {isa = PBXFileReference; path = iaptest01AppDelegate.h; sourceTree = "<group>"; };
+		C3059F9D1429CA560070FCBA /* iaptest01AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iaptest01AppDelegate.m; sourceTree = "<group>"; };
+		C3059FA01429CA560070FCBA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C3059F861429CA560070FCBA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C3059F8E1429CA560070FCBA /* UIKit.framework in Frameworks */,
+				C3059F901429CA560070FCBA /* Foundation.framework in Frameworks */,
+				C3059F921429CA560070FCBA /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C3059F7E1429CA560070FCBA = {
+			isa = PBXGroup;
+			children = (
+				C3059F931429CA560070FCBA /* iaptest01 */,
+				C3059F8C1429CA560070FCBA /* Frameworks */,
+				C3059F8A1429CA560070FCBA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C3059F8A1429CA560070FCBA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C3059F891429CA560070FCBA /* iaptest01.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C3059F8C1429CA560070FCBA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C3059F8D1429CA560070FCBA /* UIKit.framework */,
+				C3059F8F1429CA560070FCBA /* Foundation.framework */,
+				C3059F911429CA560070FCBA /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C3059F931429CA560070FCBA /* iaptest01 */ = {
+			isa = PBXGroup;
+			children = (
+				C3059F9C1429CA560070FCBA /* iaptest01AppDelegate.h */,
+				C3059F9D1429CA560070FCBA /* iaptest01AppDelegate.m */,
+				C3059F9F1429CA560070FCBA /* MainWindow.xib */,
+				C3059F941429CA560070FCBA /* Supporting Files */,
+			);
+			path = iaptest01;
+			sourceTree = "<group>";
+		};
+		C3059F941429CA560070FCBA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C3059F951429CA560070FCBA /* iaptest01-Info.plist */,
+				C3059F961429CA560070FCBA /* InfoPlist.strings */,
+				C3059F991429CA560070FCBA /* iaptest01-Prefix.pch */,
+				C3059F9A1429CA560070FCBA /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C3059F881429CA560070FCBA /* iaptest01 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C3059FA41429CA560070FCBA /* Build configuration list for PBXNativeTarget "iaptest01" */;
+			buildPhases = (
+				C3059F851429CA560070FCBA /* Sources */,
+				C3059F861429CA560070FCBA /* Frameworks */,
+				C3059F871429CA560070FCBA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = iaptest01;
+			productName = iaptest01;
+			productReference = C3059F891429CA560070FCBA /* iaptest01.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C3059F801429CA560070FCBA /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = C3059F831429CA560070FCBA /* Build configuration list for PBXProject "iaptest01" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = C3059F7E1429CA560070FCBA;
+			productRefGroup = C3059F8A1429CA560070FCBA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C3059F881429CA560070FCBA /* iaptest01 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C3059F871429CA560070FCBA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C3059F981429CA560070FCBA /* InfoPlist.strings in Resources */,
+				C3059FA11429CA560070FCBA /* MainWindow.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C3059F851429CA560070FCBA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C3059F9B1429CA560070FCBA /* main.m in Sources */,
+				C3059F9E1429CA560070FCBA /* iaptest01AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		C3059F961429CA560070FCBA /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C3059F971429CA560070FCBA /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		C3059F9F1429CA560070FCBA /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C3059FA01429CA560070FCBA /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C3059FA21429CA560070FCBA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		C3059FA31429CA560070FCBA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		C3059FA51429CA560070FCBA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iaptest01/iaptest01-Prefix.pch";
+				INFOPLIST_FILE = "iaptest01/iaptest01-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		C3059FA61429CA560070FCBA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iaptest01/iaptest01-Prefix.pch";
+				INFOPLIST_FILE = "iaptest01/iaptest01-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C3059F831429CA560070FCBA /* Build configuration list for PBXProject "iaptest01" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C3059FA21429CA560070FCBA /* Debug */,
+				C3059FA31429CA560070FCBA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C3059FA41429CA560070FCBA /* Build configuration list for PBXNativeTarget "iaptest01" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C3059FA51429CA560070FCBA /* Debug */,
+				C3059FA61429CA560070FCBA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C3059F801429CA560070FCBA /* Project object */;
+}
