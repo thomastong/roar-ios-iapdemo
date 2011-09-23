@@ -7,18 +7,156 @@
 //
 
 #import "iaptest01AppDelegate.h"
+#import "REUtils.h"
+
+
+
 
 @implementation iaptest01AppDelegate
 
 
 @synthesize window=_window;
+@synthesize login_button, create_button, username_field, password_field, auth_token_field;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    roar_engine = [[RERoarEngine alloc] init];
+    roar_engine.delegate = self;
+    
     // Override point for customization after application launch.
     [self.window makeKeyAndVisible];
+    
+    if( [SKPaymentQueue canMakePayments] )
+    {
+        NSLog(@"Payments are OK");
+        //[self requestProductData];
+    }
+    else
+    {
+        NSLog(@"Payments are not OK");
+    }
+    
     return YES;
 }
+
+- (IBAction) doLoginButton
+{
+    NSLog(@"Login Button Clicked");
+    NSLog(@"username : %@", [username_field text]);
+    NSLog(@"password : %@", [password_field text]);
+    [roar_engine login:[username_field text] withPassword:[password_field text]];
+}
+
+- (IBAction) doCreateButton
+{
+    NSLog(@"Create Button Clicked");
+    NSLog(@"username : %@", [username_field text]);
+    NSLog(@"password : %@", [password_field text]);
+    [roar_engine create:[username_field text] withPassword:[password_field text]];
+}
+
+- (void) onLogin:(RERoarEngine *)engine withAuthToken:(NSString *)auth_token
+{
+    [auth_token_field setText:auth_token];
+    NSLog(@"iaptest::onLogin %@", auth_token);
+}
+
+- (void) onCreate:(RERoarEngine *)engine
+{
+    NSLog(@"iaptest::onCreate");
+}
+
+- (void) requestProductData
+{
+    SKProductsRequest *request= [[SKProductsRequest alloc]
+                                 initWithProductIdentifiers: [NSSet setWithObjects: 
+                                                                @"com.roarengine.iaptest01.consumable01", 
+                                                                @"com.roarengine.iaptest01.nonexistant",
+                                                                nil] ];
+    request.delegate = self;
+    [request start];
+}
+
+- (void)productsRequest:(SKProductsRequest *)request didReceiveResponse:
+(SKProductsResponse *)response
+{
+    NSArray *myProduct = response.products;
+
+    for( SKProduct * r in myProduct )
+    {
+        NSLog(@"  Title       : %@\n", r.localizedTitle );
+        NSLog(@"  Description : %@\n", r.localizedDescription );
+        
+        //Lets format the price as nicely as we can.
+        NSNumberFormatter * currencyFormatter = [[[NSNumberFormatter alloc] init] autorelease];
+        [currencyFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
+        [currencyFormatter setLocale:r.priceLocale];
+        
+        NSLog(@"  Price       : %@ %@\n", [currencyFormatter stringFromNumber:r.price], [currencyFormatter internationalCurrencySymbol] );
+        NSLog(@"  Identifier  : %@\n", r.productIdentifier );
+    }
+    NSLog(@"invalid ids: %@\n", response.invalidProductIdentifiers );
+    
+    // populate UI
+    
+    //Lets try buy one :)
+    [[SKPaymentQueue defaultQueue] addTransactionObserver:self ];
+    
+    SKPayment *payment = [SKPayment paymentWithProductIdentifier:@"com.roarengine.iaptest01.consumable01"];
+    [[SKPaymentQueue defaultQueue] addPayment:payment];
+    
+    [request autorelease];
+}
+
+- (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray *)transactions
+{
+    for (SKPaymentTransaction *transaction in transactions)
+    {
+        switch (transaction.transactionState)
+        {
+            case SKPaymentTransactionStatePurchased:
+                NSLog(@"Purchase OK: %@", transaction.transactionIdentifier);
+                NSString * recpt = [[NSString alloc] initWithData:transaction.transactionReceipt encoding:NSUTF8StringEncoding];
+                NSLog(@"    Receipt: %@", recpt);
+                [recpt release];
+                NSLog(@"  ReceiptHex: %@", [REUtils hexEncodeData:transaction.transactionReceipt]);
+                
+
+//                [self completeTransaction:transaction];
+                [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
+                break;
+            case SKPaymentTransactionStateFailed:
+                NSLog(@"Purchase Failed: %@", transaction.error);
+                [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
+//                [self failedTransaction:transaction];
+                break;
+            case SKPaymentTransactionStateRestored:
+//                [self restoreTransaction:transaction];
+            default:
+                break;
+        }
+    }
+}
+
+/*
+- (void) completeTransaction: (SKPaymentTransaction *)transaction
+{
+    // Your application should implement these two methods.
+    [self recordTransaction: transaction];
+    [self provideContent: transaction.payment.productIdentifier];
+    // Remove the transaction from the payment queue.
+    [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
+}
+
+- (void) failedTransaction: (SKPaymentTransaction *)transaction
+{
+    if (transaction.error.code != SKErrorPaymentCancelled)
+    {
+        // Optionally, display an error here.
+    }
+    [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
+}
+*/
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {
@@ -62,6 +200,7 @@
 - (void)dealloc
 {
     [_window release];
+    [roar_engine release];
     [super dealloc];
 }
 

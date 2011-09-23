@@ -11,4 +11,10 @@
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
+    #import <StoreKit/StoreKit.h>
+
+    #include <libxml2/libxml/parser.h>
+    #include <libxml2/libxml/xmlmemory.h>
+    #include <libxml2/libxml/tree.h>
+    #include <libxml2/libxml/xpath.h>
 #endif

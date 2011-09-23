@@ -14,6 +14,11 @@
 		C3059F9B1429CA560070FCBA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C3059F9A1429CA560070FCBA /* main.m */; };
 		C3059F9E1429CA560070FCBA /* iaptest01AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C3059F9D1429CA560070FCBA /* iaptest01AppDelegate.m */; };
 		C3059FA11429CA560070FCBA /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3059F9F1429CA560070FCBA /* MainWindow.xib */; };
+		C3059FBE142AD50E0070FCBA /* RERoarEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = C3059FBD142AD50D0070FCBA /* RERoarEngine.m */; };
+		C3059FC1142ADEB10070FCBA /* REUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = C3059FC0142ADEB10070FCBA /* REUtils.m */; };
+		C3059FC3142AE62C0070FCBA /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3059FC2142AE62C0070FCBA /* StoreKit.framework */; };
+		C3059FC5142AEBEB0070FCBA /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C3059FC4142AEBEB0070FCBA /* libxml2.dylib */; };
+		C3059FC8142AF5200070FCBA /* REHttpDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C3059FC7142AF51F0070FCBA /* REHttpDelegate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,13 +26,21 @@
 		C3059F8D1429CA560070FCBA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C3059F8F1429CA560070FCBA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C3059F911429CA560070FCBA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		C3059F951429CA560070FCBA /* iaptest01-Info.plist */ = {isa = PBXFileReference; path = "iaptest01-Info.plist"; sourceTree = "<group>"; };
+		C3059F951429CA560070FCBA /* iaptest01-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iaptest01-Info.plist"; sourceTree = "<group>"; };
 		C3059F971429CA560070FCBA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		C3059F991429CA560070FCBA /* iaptest01-Prefix.pch */ = {isa = PBXFileReference; path = "iaptest01-Prefix.pch"; sourceTree = "<group>"; };
+		C3059F991429CA560070FCBA /* iaptest01-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iaptest01-Prefix.pch"; sourceTree = "<group>"; };
 		C3059F9A1429CA560070FCBA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		C3059F9C1429CA560070FCBA /* iaptest01AppDelegate.h */ = {isa = PBXFileReference; path = iaptest01AppDelegate.h; sourceTree = "<group>"; };
+		C3059F9C1429CA560070FCBA /* iaptest01AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iaptest01AppDelegate.h; sourceTree = "<group>"; };
 		C3059F9D1429CA560070FCBA /* iaptest01AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iaptest01AppDelegate.m; sourceTree = "<group>"; };
 		C3059FA01429CA560070FCBA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		C3059FBC142AD50D0070FCBA /* RERoarEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RERoarEngine.h; sourceTree = "<group>"; };
+		C3059FBD142AD50D0070FCBA /* RERoarEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RERoarEngine.m; sourceTree = "<group>"; };
+		C3059FBF142ADEB10070FCBA /* REUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REUtils.h; sourceTree = "<group>"; };
+		C3059FC0142ADEB10070FCBA /* REUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REUtils.m; sourceTree = "<group>"; };
+		C3059FC2142AE62C0070FCBA /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		C3059FC4142AEBEB0070FCBA /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		C3059FC6142AF51F0070FCBA /* REHttpDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REHttpDelegate.h; sourceTree = "<group>"; };
+		C3059FC7142AF51F0070FCBA /* REHttpDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REHttpDelegate.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +51,8 @@
 				C3059F8E1429CA560070FCBA /* UIKit.framework in Frameworks */,
 				C3059F901429CA560070FCBA /* Foundation.framework in Frameworks */,
 				C3059F921429CA560070FCBA /* CoreGraphics.framework in Frameworks */,
+				C3059FC3142AE62C0070FCBA /* StoreKit.framework in Frameworks */,
+				C3059FC5142AEBEB0070FCBA /* libxml2.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,6 +79,7 @@
 		C3059F8C1429CA560070FCBA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C3059FC2142AE62C0070FCBA /* StoreKit.framework */,
 				C3059F8D1429CA560070FCBA /* UIKit.framework */,
 				C3059F8F1429CA560070FCBA /* Foundation.framework */,
 				C3059F911429CA560070FCBA /* CoreGraphics.framework */,
@@ -78,6 +94,13 @@
 				C3059F9D1429CA560070FCBA /* iaptest01AppDelegate.m */,
 				C3059F9F1429CA560070FCBA /* MainWindow.xib */,
 				C3059F941429CA560070FCBA /* Supporting Files */,
+				C3059FBC142AD50D0070FCBA /* RERoarEngine.h */,
+				C3059FBD142AD50D0070FCBA /* RERoarEngine.m */,
+				C3059FBF142ADEB10070FCBA /* REUtils.h */,
+				C3059FC0142ADEB10070FCBA /* REUtils.m */,
+				C3059FC4142AEBEB0070FCBA /* libxml2.dylib */,
+				C3059FC6142AF51F0070FCBA /* REHttpDelegate.h */,
+				C3059FC7142AF51F0070FCBA /* REHttpDelegate.m */,
 			);
 			path = iaptest01;
 			sourceTree = "<group>";
@@ -154,6 +177,9 @@
 			files = (
 				C3059F9B1429CA560070FCBA /* main.m in Sources */,
 				C3059F9E1429CA560070FCBA /* iaptest01AppDelegate.m in Sources */,
+				C3059FBE142AD50E0070FCBA /* RERoarEngine.m in Sources */,
+				C3059FC1142ADEB10070FCBA /* REUtils.m in Sources */,
+				C3059FC8142AF5200070FCBA /* REHttpDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -214,11 +240,11 @@
 		C3059FA51429CA560070FCBA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iaptest01/iaptest01-Prefix.pch";
+				HEADER_SEARCH_PATHS = /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/libxml2/;
 				INFOPLIST_FILE = "iaptest01/iaptest01-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -228,10 +254,10 @@
 		C3059FA61429CA560070FCBA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iaptest01/iaptest01-Prefix.pch";
+				HEADER_SEARCH_PATHS = /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/usr/include/libxml2/;
 				INFOPLIST_FILE = "iaptest01/iaptest01-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALIDATE_PRODUCT = YES;
