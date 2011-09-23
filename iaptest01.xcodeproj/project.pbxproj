@@ -19,6 +19,20 @@
 		C3059FC3142AE62C0070FCBA /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3059FC2142AE62C0070FCBA /* StoreKit.framework */; };
 		C3059FC5142AEBEB0070FCBA /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C3059FC4142AEBEB0070FCBA /* libxml2.dylib */; };
 		C3059FC8142AF5200070FCBA /* REHttpDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C3059FC7142AF51F0070FCBA /* REHttpDelegate.m */; };
+		C31C01F4142C4F5B0066D1E2 /* IAPListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C31C01F2142C4F5B0066D1E2 /* IAPListViewController.m */; };
+		C31C01F5142C4F5B0066D1E2 /* IAPListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C31C01F3142C4F5B0066D1E2 /* IAPListViewController.xib */; };
+		C31C01FC142C5D9F0066D1E2 /* IAPDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C31C01FA142C5D9E0066D1E2 /* IAPDetailViewController.m */; };
+		C31C01FD142C5D9F0066D1E2 /* IAPDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C31C01FB142C5D9E0066D1E2 /* IAPDetailViewController.xib */; };
+		C31C0200142C66880066D1E2 /* IAPListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C31C01FF142C66880066D1E2 /* IAPListCell.m */; };
+		C32C4990142C7C1D0033CDC9 /* failed.png in Resources */ = {isa = PBXBuildFile; fileRef = C32C498F142C7C1D0033CDC9 /* failed.png */; };
+		C32C4994142C7C2F0033CDC9 /* ok.png in Resources */ = {isa = PBXBuildFile; fileRef = C32C4992142C7C2F0033CDC9 /* ok.png */; };
+		C32C499D142CAD370033CDC9 /* unknown01.png in Resources */ = {isa = PBXBuildFile; fileRef = C32C4996142CAD370033CDC9 /* unknown01.png */; };
+		C32C499E142CAD370033CDC9 /* unknown02.png in Resources */ = {isa = PBXBuildFile; fileRef = C32C4997142CAD370033CDC9 /* unknown02.png */; };
+		C32C499F142CAD370033CDC9 /* unknown03.png in Resources */ = {isa = PBXBuildFile; fileRef = C32C4998142CAD370033CDC9 /* unknown03.png */; };
+		C32C49A0142CAD370033CDC9 /* unknown04.png in Resources */ = {isa = PBXBuildFile; fileRef = C32C4999142CAD370033CDC9 /* unknown04.png */; };
+		C32C49A1142CAD370033CDC9 /* unknown05.png in Resources */ = {isa = PBXBuildFile; fileRef = C32C499A142CAD370033CDC9 /* unknown05.png */; };
+		C32C49A2142CAD370033CDC9 /* unknown06.png in Resources */ = {isa = PBXBuildFile; fileRef = C32C499B142CAD370033CDC9 /* unknown06.png */; };
+		C32C49A3142CAD370033CDC9 /* unknown07.png in Resources */ = {isa = PBXBuildFile; fileRef = C32C499C142CAD370033CDC9 /* unknown07.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +55,23 @@
 		C3059FC4142AEBEB0070FCBA /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		C3059FC6142AF51F0070FCBA /* REHttpDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REHttpDelegate.h; sourceTree = "<group>"; };
 		C3059FC7142AF51F0070FCBA /* REHttpDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REHttpDelegate.m; sourceTree = "<group>"; };
+		C31C01F1142C4F5B0066D1E2 /* IAPListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPListViewController.h; sourceTree = "<group>"; };
+		C31C01F2142C4F5B0066D1E2 /* IAPListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAPListViewController.m; sourceTree = "<group>"; };
+		C31C01F3142C4F5B0066D1E2 /* IAPListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IAPListViewController.xib; sourceTree = "<group>"; };
+		C31C01F9142C5D9E0066D1E2 /* IAPDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPDetailViewController.h; sourceTree = "<group>"; };
+		C31C01FA142C5D9E0066D1E2 /* IAPDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAPDetailViewController.m; sourceTree = "<group>"; };
+		C31C01FB142C5D9E0066D1E2 /* IAPDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IAPDetailViewController.xib; sourceTree = "<group>"; };
+		C31C01FE142C66870066D1E2 /* IAPListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPListCell.h; sourceTree = "<group>"; };
+		C31C01FF142C66880066D1E2 /* IAPListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAPListCell.m; sourceTree = "<group>"; };
+		C32C498F142C7C1D0033CDC9 /* failed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = failed.png; sourceTree = "<group>"; };
+		C32C4992142C7C2F0033CDC9 /* ok.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ok.png; sourceTree = "<group>"; };
+		C32C4996142CAD370033CDC9 /* unknown01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unknown01.png; sourceTree = "<group>"; };
+		C32C4997142CAD370033CDC9 /* unknown02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unknown02.png; sourceTree = "<group>"; };
+		C32C4998142CAD370033CDC9 /* unknown03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unknown03.png; sourceTree = "<group>"; };
+		C32C4999142CAD370033CDC9 /* unknown04.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unknown04.png; sourceTree = "<group>"; };
+		C32C499A142CAD370033CDC9 /* unknown05.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unknown05.png; sourceTree = "<group>"; };
+		C32C499B142CAD370033CDC9 /* unknown06.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unknown06.png; sourceTree = "<group>"; };
+		C32C499C142CAD370033CDC9 /* unknown07.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unknown07.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +121,15 @@
 		C3059F931429CA560070FCBA /* iaptest01 */ = {
 			isa = PBXGroup;
 			children = (
+				C32C4992142C7C2F0033CDC9 /* ok.png */,
+				C32C498F142C7C1D0033CDC9 /* failed.png */,
+				C32C4996142CAD370033CDC9 /* unknown01.png */,
+				C32C4997142CAD370033CDC9 /* unknown02.png */,
+				C32C4998142CAD370033CDC9 /* unknown03.png */,
+				C32C4999142CAD370033CDC9 /* unknown04.png */,
+				C32C499A142CAD370033CDC9 /* unknown05.png */,
+				C32C499B142CAD370033CDC9 /* unknown06.png */,
+				C32C499C142CAD370033CDC9 /* unknown07.png */,
 				C3059F9C1429CA560070FCBA /* iaptest01AppDelegate.h */,
 				C3059F9D1429CA560070FCBA /* iaptest01AppDelegate.m */,
 				C3059F9F1429CA560070FCBA /* MainWindow.xib */,
@@ -101,6 +141,14 @@
 				C3059FC4142AEBEB0070FCBA /* libxml2.dylib */,
 				C3059FC6142AF51F0070FCBA /* REHttpDelegate.h */,
 				C3059FC7142AF51F0070FCBA /* REHttpDelegate.m */,
+				C31C01F1142C4F5B0066D1E2 /* IAPListViewController.h */,
+				C31C01F2142C4F5B0066D1E2 /* IAPListViewController.m */,
+				C31C01F3142C4F5B0066D1E2 /* IAPListViewController.xib */,
+				C31C01F9142C5D9E0066D1E2 /* IAPDetailViewController.h */,
+				C31C01FA142C5D9E0066D1E2 /* IAPDetailViewController.m */,
+				C31C01FB142C5D9E0066D1E2 /* IAPDetailViewController.xib */,
+				C31C01FE142C66870066D1E2 /* IAPListCell.h */,
+				C31C01FF142C66880066D1E2 /* IAPListCell.m */,
 			);
 			path = iaptest01;
 			sourceTree = "<group>";
@@ -165,6 +213,17 @@
 			files = (
 				C3059F981429CA560070FCBA /* InfoPlist.strings in Resources */,
 				C3059FA11429CA560070FCBA /* MainWindow.xib in Resources */,
+				C31C01F5142C4F5B0066D1E2 /* IAPListViewController.xib in Resources */,
+				C31C01FD142C5D9F0066D1E2 /* IAPDetailViewController.xib in Resources */,
+				C32C4990142C7C1D0033CDC9 /* failed.png in Resources */,
+				C32C4994142C7C2F0033CDC9 /* ok.png in Resources */,
+				C32C499D142CAD370033CDC9 /* unknown01.png in Resources */,
+				C32C499E142CAD370033CDC9 /* unknown02.png in Resources */,
+				C32C499F142CAD370033CDC9 /* unknown03.png in Resources */,
+				C32C49A0142CAD370033CDC9 /* unknown04.png in Resources */,
+				C32C49A1142CAD370033CDC9 /* unknown05.png in Resources */,
+				C32C49A2142CAD370033CDC9 /* unknown06.png in Resources */,
+				C32C49A3142CAD370033CDC9 /* unknown07.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -180,6 +239,9 @@
 				C3059FBE142AD50E0070FCBA /* RERoarEngine.m in Sources */,
 				C3059FC1142ADEB10070FCBA /* REUtils.m in Sources */,
 				C3059FC8142AF5200070FCBA /* REHttpDelegate.m in Sources */,
+				C31C01F4142C4F5B0066D1E2 /* IAPListViewController.m in Sources */,
+				C31C01FC142C5D9F0066D1E2 /* IAPDetailViewController.m in Sources */,
+				C31C0200142C66880066D1E2 /* IAPListCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,6 +346,7 @@
 				C3059FA61429CA560070FCBA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

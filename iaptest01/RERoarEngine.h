@@ -17,6 +17,7 @@
 
 - (void)login:(NSString *)username withPassword:(NSString *)password;
 - (void)create:(NSString *)username withPassword:(NSString *)password;
+- (void)get_iap_list:(NSString*)auth_token;
 
 - (void) onHttpComplete:(REHttpDelegate*)http_delegate withResponse:(NSData*)response;
 
@@ -30,4 +31,5 @@
 @required
 - (void) onLogin:(RERoarEngine*)engine withAuthToken:(NSString*)auth_token;
 - (void) onCreate:(RERoarEngine*)engine;
+- (void) onIAPList:(RERoarEngine*)engine values:(NSArray*)iapList;
 @end

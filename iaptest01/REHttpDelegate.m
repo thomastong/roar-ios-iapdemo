@@ -160,6 +160,45 @@
     return retval;
 }
 
+//For xpaths like /foo/bar/
+//Returns an NSArray of NSDictionary containing the attributes on the matching nodes
+
+- (NSArray*) newArrayOfAttributeDictsFromXpath:(NSString*) xpath
+{
+    xmlXPathContext * xpathCtx = xmlXPathNewContext(xml_doc);
+    NSAssert(xpathCtx,@"Unable to create xpath context");
+    
+    xmlXPathObject * xpathObj = xmlXPathEvalExpression((const xmlChar*) [xpath UTF8String], xpathCtx);
+    NSAssert(xpathObj,@"Invalid xpath");
+    
+    NSMutableArray * retval = [[NSMutableArray alloc] init];
+    if (xpathObj->nodesetval!=NULL)
+    {
+        for( int i=0; i<xpathObj->nodesetval->nodeNr; ++i)
+        {
+            NSMutableDictionary * attributes = [[NSMutableDictionary alloc] init];
+            xmlAttr * xml_attr = xpathObj->nodesetval->nodeTab[i]->properties;
+            while(xml_attr)
+            {
+                if(xml_attr->name && xml_attr->children && xml_attr->children->content)
+                {
+                    [attributes
+                     setObject:[NSString stringWithUTF8String:(const char*)xml_attr->children->content]
+                     forKey:[NSString stringWithUTF8String:(const char*)xml_attr->name] ];
+                }
+                xml_attr = xml_attr->next;
+            }
+            
+            [retval addObject:attributes];
+        }
+    }
+
+    xmlXPathFreeObject(xpathObj);
+    xmlXPathFreeContext(xpathCtx);
+    
+    return retval;
+}
+
 - (BOOL) isOK:(NSMutableString*)error_message
 {
     xmlNode * cur = xmlDocGetRootElement(xml_doc);

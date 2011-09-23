@@ -50,6 +50,7 @@
 - (id) initWithData:(NSData*)data forController:(NSString*)cn andAction:(NSString*)an;
 - (void) dealloc;
 - (NSString*) newStringFromXpath:(NSString*) xpath;
+- (NSArray*) newArrayOfAttributeDictsFromXpath:(NSString*) xpath;
 - (BOOL) xpathExists:(NSString*) xpath;
 - (BOOL) isOK:(NSMutableString*)error_message;
 

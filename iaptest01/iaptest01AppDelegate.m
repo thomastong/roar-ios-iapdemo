@@ -17,6 +17,8 @@
 
 @synthesize window=_window;
 @synthesize login_button, create_button, username_field, password_field, auth_token_field;
+@synthesize login_view;
+@synthesize main_view;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -24,7 +26,16 @@
     roar_engine.delegate = self;
     
     // Override point for customization after application launch.
+    [application setStatusBarHidden:YES];
+    
+    iap_list_view_controller = [[IAPListViewController alloc] initWithNibName:@"IAPListViewController" bundle:nil];
+    [iap_list_view_controller setDelegate:self];
+    
+    iap_detail_view_controller = [[IAPDetailViewController alloc] initWithNibName:@"IAPDetailViewController" bundle:nil];
+    
+    
     [self.window makeKeyAndVisible];
+    [self.window addSubview:self.login_view];
     
     if( [SKPaymentQueue canMakePayments] )
     {
@@ -37,6 +48,16 @@
     }
     
     return YES;
+}
+
+
+- (void)dealloc
+{
+    [_window release];
+    [roar_engine release];
+    [iap_list_view_controller release];
+    [iap_detail_view_controller release];
+    [super dealloc];
 }
 
 - (IBAction) doLoginButton
@@ -55,9 +76,15 @@
     [roar_engine create:[username_field text] withPassword:[password_field text]];
 }
 
+- (IBAction) doGetIAPList
+{
+    [roar_engine get_iap_list:[auth_token_field text]];
+}
+
 - (void) onLogin:(RERoarEngine *)engine withAuthToken:(NSString *)auth_token
 {
     [auth_token_field setText:auth_token];
+    [self.window addSubview:self.main_view];
     NSLog(@"iaptest::onLogin %@", auth_token);
 }
 
@@ -65,6 +92,24 @@
 {
     NSLog(@"iaptest::onCreate");
 }
+
+- (void) onIAPList:(RERoarEngine *)engine values:(NSArray *)iapList
+{
+    NSLog(@"Got %d items in IAP list", [iapList count]);
+    NSLog(@"%@", iapList);
+    [iap_list_view_controller setIAPList:iapList];
+    [self.window addSubview:iap_list_view_controller.view];
+}
+
+- (void) selectedIAPToView:(NSDictionary*)iap_info
+{
+    NSLog(@"You clicked %@!", [iap_info objectForKey:@"product_identifier"]);
+    NSLog(@"%@", iap_info);
+    [iap_detail_view_controller setInfo:iap_info];
+    [self.window addSubview:iap_detail_view_controller.view];
+}
+
+
 
 - (void) requestProductData
 {
@@ -197,11 +242,5 @@
      */
 }
 
-- (void)dealloc
-{
-    [_window release];
-    [roar_engine release];
-    [super dealloc];
-}
 
 @end

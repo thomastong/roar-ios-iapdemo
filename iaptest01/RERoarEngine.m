@@ -51,7 +51,20 @@
    [http_delegate release];
 }
 
-
+- (void) get_iap_list:(NSString *)auth_token
+{
+    NSMutableURLRequest * theRequest=[NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://192.168.1.2/server/appstore/shop_list/"] ];
+    [theRequest setHTTPMethod:@"POST"];
+    NSString * postString =[NSString stringWithFormat:@"auth_token=%@", [REUtils urlEncodeStringValue:auth_token] ];
+    [theRequest setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    REHttpDelegate * http_delegate = [[REHttpDelegate alloc] init];
+    http_delegate.action = @"get_iap_list";
+    http_delegate.delegate = self;
+    
+    [[NSURLConnection alloc] initWithRequest:theRequest delegate:http_delegate];
+    [http_delegate release];
+}
 
 - (void) onHttpComplete:(REHttpDelegate*)http_delegate withResponse:(NSData*)response
 {
@@ -63,6 +76,10 @@
         if( ! [rr isOK:error_message] )
         {
             NSLog(@"Failure in create : %@", error_message);
+            //This should probably be in an error handler .. but it'll do in here for now.
+            UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"ROAR Create Error" message:[NSString stringWithFormat:@"Failure in create : %@", error_message] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil ];
+            [alert show];
+            [alert release];
         }
         else
         {
@@ -76,7 +93,11 @@
         NSMutableString * error_message = [[NSMutableString alloc] init];
         if( ! [rr isOK:error_message] )
         {
-            NSLog(@"Failure in create : %@", error_message);
+            NSLog(@"Failure in login : %@", error_message);
+            //This should probably be in an error handler .. but it'll do in here for now.
+            UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"ROAR Login Error" message:[NSString stringWithFormat:@"Failure in login : %@", error_message] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil ];
+            [alert show];
+            [alert release];
         }
         else
         {
@@ -85,15 +106,27 @@
         }
         [rr release];
     }
-    
-  /*  
-    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"ROAR Error" message:@"Some error" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil ];
-    [alert show];
-    [alert release];
- */
 
-
-    
+    else if( [http_delegate.action isEqualToString:@"get_iap_list"] )
+    {
+        RERoarResponse * rr = [[RERoarResponse alloc] initWithData:response forController:@"appstore" andAction:@"shop_list"];
+        NSMutableString * error_message = [[NSMutableString alloc] init];
+        if( ! [rr isOK:error_message] )
+        {
+            NSLog(@"Failure in appstore/shop_list : %@", error_message);
+            //This should probably be in an error handler .. but it'll do in here for now.
+            UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"ROAR IAP List Error" message:[NSString stringWithFormat:@"Failure in appstore/shop_list : %@", error_message] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil ];
+            [alert show];
+            [alert release];
+        }
+        else
+        {
+             NSArray * iap_list = [rr newArrayOfAttributeDictsFromXpath:@"/roar/appstore/shop_list/shopitem"];
+             [self.delegate onIAPList:self values:iap_list];
+             [iap_list release];
+        }
+        [rr release];
+    }
     
 }
 
