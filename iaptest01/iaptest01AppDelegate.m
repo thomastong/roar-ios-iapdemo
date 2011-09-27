@@ -37,6 +37,13 @@
     
     info_view_controller = [[InfoViewController alloc] initWithNibName:@"InfoViewController" app:self bundle:nil];
     
+    //Load the user preferences if any
+    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+    NSString * sr = [defaults stringForKey:@"server_root"];
+    if(sr)
+    {
+        roar_engine.server_root = sr;
+    }
     
     [self.window makeKeyAndVisible];
     [self.window addSubview:self.login_view];

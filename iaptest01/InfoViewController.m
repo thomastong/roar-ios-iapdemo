@@ -34,6 +34,12 @@
 - (IBAction) onDone
 {
     app_.roar_engine.server_root = [server_root text];
+    //Save the user preferences if any
+    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setValue:[server_root text] forKey:@"server_root"];
+    [defaults synchronize];
+
+
     [server_root resignFirstResponder];
     [app_.window addSubview:app_.login_view];
 }
