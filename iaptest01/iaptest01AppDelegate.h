@@ -13,7 +13,7 @@
 #import "IAPListViewController.h"
 #import "IAPDetailViewController.h"
 
-@interface iaptest01AppDelegate : NSObject <UIApplicationDelegate, SKProductsRequestDelegate, SKPaymentTransactionObserver,
+@interface iaptest01AppDelegate : NSObject <UIApplicationDelegate, SKPaymentTransactionObserver,
     RERoarEngineDelegate,
     IAPListViewDelegate>
 {
@@ -45,7 +45,7 @@
 - (IBAction) doLoginButton;
 - (IBAction) doCreateButton;
 - (IBAction) doGetIAPList;
-- (void) requestProductData;
+- (void)buySomething:(NSString *)thing_to_buy;
 - (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray *)transactions;
 
 @end

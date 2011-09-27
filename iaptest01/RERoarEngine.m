@@ -51,6 +51,28 @@
    [http_delegate release];
 }
 
+- (void) appstore_purchase:(SKPaymentTransaction *)transaction withAuthToken:(NSString *)auth_token
+{
+    NSLog(@"auth token: %@", auth_token);
+    NSLog(@"Purchase OK: %@", transaction.transactionIdentifier);
+    NSString * recpt = [[NSString alloc] initWithData:transaction.transactionReceipt encoding:NSUTF8StringEncoding];
+    NSLog(@"    Receipt: %@", recpt);
+    [recpt release];
+    NSLog(@"  ReceiptHex: %@", [REUtils hexEncodeData:transaction.transactionReceipt]);
+    
+    NSMutableURLRequest * theRequest=[NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://192.168.1.2/server/appstore/buy/"] ];
+    [theRequest setHTTPMethod:@"POST"];
+    NSString * postString =[NSString stringWithFormat:@"auth_token=%@&sandbox=1&receipt=%@", [REUtils urlEncodeStringValue:auth_token], [REUtils urlEncodeStringValue:[REUtils hexEncodeData:transaction.transactionReceipt]]];
+    [theRequest setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    REHttpDelegate * http_delegate = [[REHttpDelegate alloc] init];
+    http_delegate.action = @"buy_iap";
+    http_delegate.delegate = self;
+    
+    [[NSURLConnection alloc] initWithRequest:theRequest delegate:http_delegate];
+    [http_delegate release];
+}
+
 - (void) get_iap_list:(NSString *)auth_token
 {
     NSMutableURLRequest * theRequest=[NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://192.168.1.2/server/appstore/shop_list/"] ];
@@ -127,7 +149,26 @@
         }
         [rr release];
     }
-    
+    else if( [http_delegate.action isEqualToString:@"buy_iap"] )
+    {
+        RERoarResponse * rr = [[RERoarResponse alloc] initWithData:response forController:@"appstore" andAction:@"buy"];
+        NSMutableString * error_message = [[NSMutableString alloc] init];
+        if( ! [rr isOK:error_message] )
+        {
+            NSLog(@"Failure in appstore/buy : %@", error_message);
+            //This should probably be in an error handler .. but it'll do in here for now.
+            UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"ROAR IAP Buy Error" message:[NSString stringWithFormat:@"Failure in appstore/buy : %@", error_message] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil ];
+            [alert show];
+            [alert release];
+        }
+        else
+        {
+            UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"ROAR IAP Buy OK" message:@"Buy was OK" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil ];
+            [alert show];
+            [alert release];
+        }
+        [rr release];
+    }
 }
 
 @end

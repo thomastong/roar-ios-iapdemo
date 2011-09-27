@@ -32,6 +32,7 @@
     [iap_list_view_controller setDelegate:self];
     
     iap_detail_view_controller = [[IAPDetailViewController alloc] initWithNibName:@"IAPDetailViewController" bundle:nil];
+    [iap_detail_view_controller setAppDelegate:self];
     
     
     [self.window makeKeyAndVisible];
@@ -40,7 +41,6 @@
     if( [SKPaymentQueue canMakePayments] )
     {
         NSLog(@"Payments are OK");
-        //[self requestProductData];
     }
     else
     {
@@ -105,52 +105,22 @@
 {
     NSLog(@"You clicked %@!", [iap_info objectForKey:@"product_identifier"]);
     NSLog(@"%@", iap_info);
-    [iap_detail_view_controller setInfo:iap_info];
-    [self.window addSubview:iap_detail_view_controller.view];
-}
-
-
-
-- (void) requestProductData
-{
-    SKProductsRequest *request= [[SKProductsRequest alloc]
-                                 initWithProductIdentifiers: [NSSet setWithObjects: 
-                                                                @"com.roarengine.iaptest01.consumable01", 
-                                                                @"com.roarengine.iaptest01.nonexistant",
-                                                                nil] ];
-    request.delegate = self;
-    [request start];
-}
-
-- (void)productsRequest:(SKProductsRequest *)request didReceiveResponse:
-(SKProductsResponse *)response
-{
-    NSArray *myProduct = response.products;
-
-    for( SKProduct * r in myProduct )
+    if( [iap_info objectForKey:@"appstore_info"] )
     {
-        NSLog(@"  Title       : %@\n", r.localizedTitle );
-        NSLog(@"  Description : %@\n", r.localizedDescription );
-        
-        //Lets format the price as nicely as we can.
-        NSNumberFormatter * currencyFormatter = [[[NSNumberFormatter alloc] init] autorelease];
-        [currencyFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
-        [currencyFormatter setLocale:r.priceLocale];
-        
-        NSLog(@"  Price       : %@ %@\n", [currencyFormatter stringFromNumber:r.price], [currencyFormatter internationalCurrencySymbol] );
-        NSLog(@"  Identifier  : %@\n", r.productIdentifier );
+        [self.window addSubview:iap_detail_view_controller.view];
+        [iap_detail_view_controller setInfo:iap_info];
     }
-    NSLog(@"invalid ids: %@\n", response.invalidProductIdentifiers );
-    
-    // populate UI
-    
+}
+
+
+
+- (void)buySomething:(NSString *)thing_to_buy
+{
     //Lets try buy one :)
     [[SKPaymentQueue defaultQueue] addTransactionObserver:self ];
     
-    SKPayment *payment = [SKPayment paymentWithProductIdentifier:@"com.roarengine.iaptest01.consumable01"];
+    SKPayment *payment = [SKPayment paymentWithProductIdentifier:thing_to_buy];
     [[SKPaymentQueue defaultQueue] addPayment:payment];
-    
-    [request autorelease];
 }
 
 - (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray *)transactions
@@ -160,14 +130,9 @@
         switch (transaction.transactionState)
         {
             case SKPaymentTransactionStatePurchased:
-                NSLog(@"Purchase OK: %@", transaction.transactionIdentifier);
-                NSString * recpt = [[NSString alloc] initWithData:transaction.transactionReceipt encoding:NSUTF8StringEncoding];
-                NSLog(@"    Receipt: %@", recpt);
-                [recpt release];
-                NSLog(@"  ReceiptHex: %@", [REUtils hexEncodeData:transaction.transactionReceipt]);
-                
 
-//                [self completeTransaction:transaction];
+                [roar_engine appstore_purchase:transaction withAuthToken:[auth_token_field text]];
+                
                 [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
                 break;
             case SKPaymentTransactionStateFailed:
@@ -183,25 +148,7 @@
     }
 }
 
-/*
-- (void) completeTransaction: (SKPaymentTransaction *)transaction
-{
-    // Your application should implement these two methods.
-    [self recordTransaction: transaction];
-    [self provideContent: transaction.payment.productIdentifier];
-    // Remove the transaction from the payment queue.
-    [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
-}
 
-- (void) failedTransaction: (SKPaymentTransaction *)transaction
-{
-    if (transaction.error.code != SKErrorPaymentCancelled)
-    {
-        // Optionally, display an error here.
-    }
-    [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
-}
-*/
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {

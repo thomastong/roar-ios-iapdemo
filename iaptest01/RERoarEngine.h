@@ -20,6 +20,7 @@
 - (void)get_iap_list:(NSString*)auth_token;
 
 - (void) onHttpComplete:(REHttpDelegate*)http_delegate withResponse:(NSData*)response;
+- (void) appstore_purchase:(SKPaymentTransaction*)transaction withAuthToken:(NSString*)auth_token;
 
 @property(nonatomic, assign) id <RERoarEngineDelegate> delegate;
 
