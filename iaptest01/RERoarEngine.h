@@ -15,6 +15,8 @@
 {
 }
 
+-(id)init;
+
 - (void)login:(NSString *)username withPassword:(NSString *)password;
 - (void)create:(NSString *)username withPassword:(NSString *)password;
 - (void)get_iap_list:(NSString*)auth_token;
@@ -23,6 +25,7 @@
 - (void) appstore_purchase:(SKPaymentTransaction*)transaction withAuthToken:(NSString*)auth_token;
 
 @property(nonatomic, assign) id <RERoarEngineDelegate> delegate;
+@property(nonatomic, retain) NSString * server_root;
 
 @end
 

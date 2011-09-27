@@ -18,12 +18,22 @@
 @implementation RERoarEngine
 
 @synthesize delegate;
+@synthesize server_root;
+
+-(id) init
+{
+    self=[super init];
+    if(self)
+    {
+        self.server_root=@"http://192.168.1.2/server/";
+    }
+    return self;
+}
 
 
 - (void) login:(NSString *)username withPassword:(NSString *)password
 {
-    NSURL * the_url = [NSURL URLWithString:@"http://192.168.1.2/server/user/login/"];
-    NSMutableURLRequest * theRequest=[NSMutableURLRequest requestWithURL:the_url ];
+    NSMutableURLRequest * theRequest=[NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/user/login/", self.server_root] ] ];
     [theRequest setHTTPMethod:@"POST"];
     NSString * postString =[NSString stringWithFormat:@"name=%@&hash=%@", [REUtils urlEncodeStringValue:username], [REUtils urlEncodeStringValue:password]];
     [theRequest setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
@@ -38,7 +48,7 @@
 
 - (void) create:(NSString *)username withPassword:(NSString *)password
 {
-    NSMutableURLRequest * theRequest=[NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://192.168.1.2/server/user/create/"] ];
+    NSMutableURLRequest * theRequest=[NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/user/create/", self.server_root] ] ];
     [theRequest setHTTPMethod:@"POST"];
     NSString * postString =[NSString stringWithFormat:@"name=%@&hash=%@", [REUtils urlEncodeStringValue:username], [REUtils urlEncodeStringValue:password]];
     [theRequest setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
@@ -60,7 +70,7 @@
     [recpt release];
     NSLog(@"  ReceiptHex: %@", [REUtils hexEncodeData:transaction.transactionReceipt]);
     
-    NSMutableURLRequest * theRequest=[NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://192.168.1.2/server/appstore/buy/"] ];
+    NSMutableURLRequest * theRequest=[NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/appstore/buy/", self.server_root ] ] ];
     [theRequest setHTTPMethod:@"POST"];
     NSString * postString =[NSString stringWithFormat:@"auth_token=%@&sandbox=1&receipt=%@", [REUtils urlEncodeStringValue:auth_token], [REUtils urlEncodeStringValue:[REUtils hexEncodeData:transaction.transactionReceipt]]];
     [theRequest setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
@@ -75,7 +85,7 @@
 
 - (void) get_iap_list:(NSString *)auth_token
 {
-    NSMutableURLRequest * theRequest=[NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://192.168.1.2/server/appstore/shop_list/"] ];
+    NSMutableURLRequest * theRequest=[NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/appstore/shop_list/", self.server_root] ] ];
     [theRequest setHTTPMethod:@"POST"];
     NSString * postString =[NSString stringWithFormat:@"auth_token=%@", [REUtils urlEncodeStringValue:auth_token] ];
     [theRequest setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
