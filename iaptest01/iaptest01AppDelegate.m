@@ -19,6 +19,7 @@
 @synthesize login_button, create_button, username_field, password_field, auth_token_field;
 @synthesize login_view;
 @synthesize main_view;
+@synthesize roar_engine;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -33,6 +34,8 @@
     
     iap_detail_view_controller = [[IAPDetailViewController alloc] initWithNibName:@"IAPDetailViewController" bundle:nil];
     [iap_detail_view_controller setAppDelegate:self];
+    
+    info_view_controller = [[InfoViewController alloc] initWithNibName:@"InfoViewController" app:self bundle:nil];
     
     
     [self.window makeKeyAndVisible];
@@ -57,6 +60,7 @@
     [roar_engine release];
     [iap_list_view_controller release];
     [iap_detail_view_controller release];
+    [info_view_controller release];
     [super dealloc];
 }
 
@@ -66,6 +70,8 @@
     NSLog(@"username : %@", [username_field text]);
     NSLog(@"password : %@", [password_field text]);
     [roar_engine login:[username_field text] withPassword:[password_field text]];
+    [username_field resignFirstResponder];
+    [password_field resignFirstResponder];
 }
 
 - (IBAction) doCreateButton
@@ -79,6 +85,11 @@
 - (IBAction) doGetIAPList
 {
     [roar_engine get_iap_list:[auth_token_field text]];
+}
+
+- (IBAction) showInfo
+{
+    [self.window addSubview:info_view_controller.view];
 }
 
 - (void) onLogin:(RERoarEngine *)engine withAuthToken:(NSString *)auth_token

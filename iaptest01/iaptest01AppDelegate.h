@@ -12,6 +12,7 @@
 #import "RERoarEngine.h"
 #import "IAPListViewController.h"
 #import "IAPDetailViewController.h"
+#import "InfoViewController.h"
 
 @interface iaptest01AppDelegate : NSObject <UIApplicationDelegate, SKPaymentTransactionObserver,
     RERoarEngineDelegate,
@@ -30,6 +31,7 @@
     RERoarEngine * roar_engine;
     IAPListViewController * iap_list_view_controller;
     IAPDetailViewController * iap_detail_view_controller;
+    InfoViewController * info_view_controller;
 
 }
 
@@ -41,10 +43,12 @@
 @property (nonatomic, retain) IBOutlet UITextField *auth_token_field;
 @property (nonatomic, retain) IBOutlet UIView *login_view;
 @property (nonatomic, retain) IBOutlet UIView *main_view;
+@property (nonatomic, readonly) RERoarEngine * roar_engine;
 
 - (IBAction) doLoginButton;
 - (IBAction) doCreateButton;
 - (IBAction) doGetIAPList;
+- (IBAction) showInfo;
 - (void)buySomething:(NSString *)thing_to_buy;
 - (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray *)transactions;
 
